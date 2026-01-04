@@ -1,22 +1,17 @@
 function buscar() {
-    // Obtenemos el VALOR que el usuario escribió
-    var n = document.getElementById('numC').value;
-    var r = document.getElementById('resu');
+    // 1. Obtenemos el número que escribiste
+    var numero = document.getElementById('numC').value;
+    
+    // 2. Buscamos el lugar donde se verá la foto
+    var resultado = document.getElementById('resu');
 
-    if (n === "") {
-        alert("Por favor, escribe el número");
+    // 3. Si no escribiste nada, avisamos
+    if (numero === "") {
+        alert("Por favor, escribe un número");
         return;
     }
 
-    // Creamos el nombre de la imagen usando el número
-    let nombreImagen = n + ".jpg";
-
-    r.innerHTML = `
-        <div style="margin-top: 20px; text-align: center;">
-            <p style="color: white; margin-bottom: 10px;">Mostrando imagen: ${n}</p>
-            <img src="${nombreImagen}" alt="Imagen ${n}" 
-                 style="width: 100%; max-width: 400px; border-radius: 10px; border: 2px solid #28a745;"
-                 onerror="this.parentElement.innerHTML='<p style=color:red;>No se encontró la imagen ${n}.jpg</p>'">
-        </div>
-    `;
+    // 4. Ponemos la imagen en la pantalla
+    // Usamos el número que escribiste + .jpg
+    resultado.innerHTML = '<img src="' + numero + '.jpg" style="width:100%; max-width:500px; margin-top:20px;">';
 }
