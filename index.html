@@ -2,16 +2,30 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Bingoisa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingoisa Pro</title>
 </head>
-<body style="background-color: #1a1a1a; color: white; text-align: center; font-family: Arial; padding-top: 50px;">
-    <h1>Buscador Bingoisa</h1>
-    <p>Introduce un número y dale a buscar:</p>
-    <input type="number" id="numC" placeholder="Ej: 10" style="padding: 10px; border-radius: 5px;">
-    <button onclick="buscar()" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
-        Buscar Imagen
-    </button>
-    <div id="resu" style="margin-top: 30px;"></div>
+<body style="background-color: #121212; color: #ffffff; text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px;">
+
+    <div style="max-width: 500px; margin: auto; background: #1e1e1e; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+        <h1 style="color: #28a745; margin-bottom: 10px;">Buscador Bingoisa</h1>
+        <p style="color: #bbb; margin-bottom: 25px;">Introduce un número para ver tu cartón</p>
+
+        <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 20px;">
+            <input type="number" id="numC" placeholder="Ej: 10" 
+                   style="padding: 12px; border-radius: 10px; border: 2px solid #333; background: #252525; color: white; width: 60%; font-size: 16px;">
+            
+            <button onclick="buscar()" 
+                    style="padding: 12px 20px; background-color: #28a745; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 16px;">
+                Buscar
+            </button>
+        </div>
+
+        <div id="resu" style="min-height: 200px; display: flex; align-items: center; justify-content: center;">
+            <p style="color: #555;">La imagen aparecerá aquí</p>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
