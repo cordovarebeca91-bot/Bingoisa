@@ -1,56 +1,183 @@
-white;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo Isa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
-        .logo-circulo img { width: 100%; height: 100%; object-fit: cover; }
-        .btn-whatsapp { background-color: #25d366; color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; }
-        .card-admin {
-            background: linear-gradient(135deg, #f7971e, #ffd200);
-            margin: 20px 15px; padding: 25px; border-radius: 20px; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+        body {
+            background-color: #f4f7f6;
         }
-        .buscador-wrap {
-            background: white; margin: 0 15px; padding: 10px; border-radius: 50px;
-            display: flex; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+        /* HEADER CON LOGO EN LA ESQUINA */
+        .navbar {
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        input { flex-grow: 1; border: none; padding: 10px 15px; outline: none; font-size: 16px; }
-        .btn-buscar { background: #ff416c; color: white; border: none; padding: 10px 20px; border-radius: 40px; font-weight: bold; }
-        .visor {
-            background: white; margin: 20px 15px; padding: 40px 20px; border: 2px dashed #ff416c; border-radius: 20px; color: #888;
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid white;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .brand-badge {
+            background: rgba(255,255,255,0.25);
+            padding: 6px 18px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* BANNER ADMINISTRADOR */
+        .admin-card {
+            margin: 20px 15px;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            border-radius: 20px;
+            padding: 40px 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 20px rgba(255, 126, 95, 0.3);
+        }
+
+        .admin-card h2 {
+            font-size: 18px;
+            letter-spacing: 3px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .admin-card h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        /* BUSCADOR */
+        .search-container {
+            margin: 15px;
+            background: white;
+            border-radius: 15px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
+        }
+
+        .search-container input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 12px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .btn-buscar {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .helper-text {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        /* RESULTADO (CARTÓN) */
+        #resu {
+            margin: 15px;
+            border: 2px dashed #ddd;
+            border-radius: 25px;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <div class="logo-circulo">
-                <img src="https://i.ibb.co/qlcul2q/Bingo-ISA.jpg" alt="Logo">
-            </div>
-            <span style="font-weight: bold; font-size: 20px;">Bingo ISA</span>
+
+    <div class="navbar">
+        <div class="logo-section">
+            <img src="logo.jpg" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/50'">
+            <div class="brand-badge">Bingo Isa</div>
         </div>
-        <a href="https://wa.me/584167164666" class="btn-whatsapp">WhatsApp</a>
-    </header>
-
-    <div class="card-admin">
-        <p style="margin:0; font-size: 12px; font-weight: bold;">ADMINISTRADOR</p>
-        <h1 style="margin:10px 0;">04167164666</h1>
-        <p style="margin:0; opacity: 0.9;">Busca tu cartón por número</p>
+        <a href="https://wa.me/584167164666" class="btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> Grupo
+        </a>
     </div>
 
-    <div class="buscador-wrap">
-        <input type="number" id="numCarton" placeholder="Ej: 125">
-        <button class="btn-buscar" onclick="buscar()">BUSCAR</button>
+    <div class="admin-card">
+        <h2>ADMINISTRADOR</h2>
+        <h1>04167164666</h1>
+        <p>Busca tu cartón favorito por número</p>
     </div>
 
-    <div class="visor" id="resultado">
-        <h3>Tu cartón aparecerá aquí</h3>
+    <div class="search-container">
+        <input type="number" id="numC" placeholder="Número del cartón...">
+        <button onclick="buscar()" class="btn-buscar">
+            <i class="fas fa-search"></i> Buscar
+        </button>
+    </div>
+    <p class="helper-text">Ingresa el número exacto para visualizarlo</p>
+
+    <div id="resu">
+        <i class="fas fa-search" style="font-size: 50px; color: #eee; margin-bottom: 15px;"></i>
+        <h3 style="color: #444;">Busca tu cartón de Bingo</h3>
+        <p style="text-align: center; color: #999; font-size: 14px; margin-top: 10px; max-width: 250px;">
+            El cartón aparecerá aquí automáticamente al realizar la búsqueda.
+        </p>
     </div>
 
-    <script>
-        function buscar() {
-            var n = document.getElementById('numCarton').value;
-            var r = document.getElementById('resultado');
-            if(n != "") {
-                r.innerHTML = "<h2>Cartón #" + n + "</h2><p>Buscando imagen...</p>";
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
