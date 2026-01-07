@@ -3,114 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscador de Cartones - Bingo Isa</title>
+    <title>Bingo Isa - Buscador</title>
     <style>
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f0f2f5;
-            margin: 0;
-            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin: 0;
+            padding: 20px;
         }
 
-        /* Diseño colorido que aprobaste */
-        .admin-card {
-            background: linear-gradient(135deg, #6e00ff, #ff00d4);
-            border-radius: 20px;
-            padding: 30px;
+        /* El diseño colorido que aprobaste */
+        .header-card {
+            background: linear-gradient(to bottom right, #6200ee, #ff00ba);
             width: 90%;
             max-width: 400px;
+            border-radius: 20px;
+            padding: 25px;
             text-align: center;
             color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            margin-bottom: 25px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
         }
 
         .phone {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: bold;
-            display: block;
             margin: 10px 0;
+            display: block;
         }
 
-        .search-container {
-            width: 95%;
+        /* Buscador centrado y visible */
+        .search-box {
+            width: 90%;
             max-width: 400px;
             display: flex;
-            align-items: center;
             background: white;
+            border: 3px solid #00e5ff;
             border-radius: 50px;
             padding: 5px 15px;
-            border: 3px solid #00d4ff;
-            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,229,255,0.3);
         }
 
         input {
+            flex: 1;
             border: none;
-            padding: 15px;
-            width: 100%;
+            padding: 12px;
             font-size: 1.1rem;
             outline: none;
-            border-radius: 50px;
         }
 
-        .search-btn {
-            background-color: #ff4b5c;
+        .btn-search {
+            background-color: #ff5252;
             border: none;
             color: white;
-            padding: 12px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             cursor: pointer;
+            font-size: 1.2rem;
         }
 
-        /* Área donde aparece el cartón */
-        #resultado-carton {
-            margin-top: 20px;
+        #contenedor-carton {
+            margin-top: 25px;
             width: 100%;
-            max-width: 500px;
+            max-width: 450px;
             text-align: center;
         }
 
         img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
 
-    <div class="admin-card">
-        <h2>ADMINISTRADOR</h2>
+    <div class="header-card">
+        <small>ADMINISTRADOR</small>
         <span class="phone">04167164666</span>
         <p>Busca tu cartón favorito por número</p>
     </div>
 
-    <div class="search-container">
-        <input type="number" id="numeroCarton" placeholder="Número del cartón...">
-        <button class="search-btn" onclick="buscarCarton()">
-            🔍
-        </button>
+    <div class="search-box">
+        <input type="number" id="inputNumero" placeholder="Número del cartón...">
+        <button class="btn-search" onclick="realizarBusqueda()">🔍</button>
     </div>
 
-    <div id="resultado-carton">
-        <p style="color: #888;">Ingresa el número para visualizarlo</p>
-    </div>
+    <p style="color: #666; font-size: 0.9rem; margin-top: 10px;">
+        Ingresa el número exacto para visualizarlo
+    </p>
+
+    <div id="contenedor-carton">
+        </div>
 
     <script>
-        function buscarCarton() {
-            const numero = document.getElementById('numeroCarton').value;
-            const contenedor = document.getElementById('resultado-carton');
-            
-            if(numero) {
-                // Esta es la lógica para jalar la imagen (asumiendo la ruta del servidor)
-                // Se construye la URL del cartón usando el número ingresado
-                contenedor.innerHTML = `<img src="cartones/${numero}.jpg" onerror="this.src='https://via.placeholder.com/400x600?text=Carton+No+Encontrado'" />`;
-            } else {
-                alert("Por favor, ingresa un número");
+        function realizarBusqueda() {
+            const num = document.getElementById('inputNumero').value;
+            const contenedor = document.getElementById('contenedor-carton');
+
+            if (num === "") {
+                alert("Por favor escribe un número");
+                return;
             }
+
+            // IMPORTANTE: Aquí conectamos con las fotos reales del servidor
+            const urlImagen = `https://rebeca91-bot.github.io/cartones/${num}.jpg`;
+            
+            contenedor.innerHTML = `<img src="${urlImagen}" alt="Cargando cartón..." onerror="this.onerror=null; alert('El cartón número ' + num + ' no existe aún.');">`;
         }
     </script>
 
