@@ -3,181 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bingo Isa</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
+    <title>Buscador de Cartones - Bingo Isa</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
         body {
-            background-color: #f4f7f6;
-        }
-
-        /* HEADER CON LOGO EN LA ESQUINA */
-        .navbar {
-            background: linear-gradient(90deg, #ff7e5f, #feb47b);
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid white;
-            object-fit: cover;
-            margin-right: 10px;
-        }
-
-        .brand-badge {
-            background: rgba(255,255,255,0.25);
-            padding: 6px 18px;
-            border-radius: 20px;
-            color: white;
-            font-weight: bold;
-            font-size: 15px;
-        }
-
-        .btn-whatsapp {
-            background: #25d366;
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* BANNER ADMINISTRADOR */
-        .admin-card {
-            margin: 20px 15px;
-            background: linear-gradient(135deg, #ff7e5f, #feb47b);
-            border-radius: 20px;
-            padding: 40px 15px;
-            text-align: center;
-            color: white;
-            box-shadow: 0 8px 20px rgba(255, 126, 95, 0.3);
-        }
-
-        .admin-card h2 {
-            font-size: 18px;
-            letter-spacing: 3px;
-            opacity: 0.9;
-            margin-bottom: 5px;
-        }
-
-        .admin-card h1 {
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        /* BUSCADOR */
-        .search-container {
-            margin: 15px;
-            background: white;
-            border-radius: 15px;
-            padding: 8px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            border: 1px solid #eee;
-        }
-
-        .search-container input {
-            flex: 1;
-            border: none;
-            outline: none;
-            padding: 12px;
-            font-size: 16px;
-            color: #555;
-        }
-
-        .btn-buscar {
-            background: #ff6b6b;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .helper-text {
-            text-align: center;
-            color: #888;
-            font-size: 13px;
-            margin-bottom: 20px;
-        }
-
-        /* RESULTADO (CARTÓN) */
-        #resu {
-            margin: 15px;
-            border: 2px dashed #ddd;
-            border-radius: 25px;
-            min-height: 350px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        /* Contenedor Principal (Tarjeta del Administrador) */
+        .admin-card {
+            background: linear-gradient(135deg, #6e00ff, #ff00d4);
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin-bottom: 25px;
+        }
+
+        .admin-card h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        .admin-card .phone {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 15px 0;
+            display: block;
+        }
+
+        /* Buscador mejorado y centrado */
+        .search-container {
+            width: 90%;
+            max-width: 400px;
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 50px;
+            padding: 5px 15px;
+            border: 3px solid #00d4ff; /* Borde neón */
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        input[type="text"] {
+            border: none;
+            padding: 15px;
+            width: 100%;
+            font-size: 1.1rem;
+            outline: none;
+            border-radius: 50px;
+        }
+
+        .search-btn {
+            background-color: #ff4b5c;
+            border: none;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            background-color: white;
-            padding: 20px;
+            transition: transform 0.2s;
+        }
+
+        .search-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .instruction {
+            color: #666;
+            margin-top: 15px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
-    <div class="navbar">
-        <div class="logo-section">
-            <img src="logo.jpg" alt="Logo" class="logo-img" onerror="this.src='https://via.placeholder.com/50'">
-            <div class="brand-badge">Bingo Isa</div>
-        </div>
-        <a href="https://wa.me/584167164666" class="btn-whatsapp">
-            <i class="fab fa-whatsapp"></i> Grupo
-        </a>
-    </div>
-
     <div class="admin-card">
         <h2>ADMINISTRADOR</h2>
-        <h1>04167164666</h1>
+        <span class="phone">04167164666</span>
         <p>Busca tu cartón favorito por número</p>
     </div>
 
     <div class="search-container">
-        <input type="number" id="numC" placeholder="Número del cartón...">
-        <button onclick="buscar()" class="btn-buscar">
-            <i class="fas fa-search"></i> Buscar
+        <input type="text" placeholder="Número del cartón...">
+        <button class="search-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         </button>
     </div>
-    <p class="helper-text">Ingresa el número exacto para visualizarlo</p>
 
-    <div id="resu">
-        <i class="fas fa-search" style="font-size: 50px; color: #eee; margin-bottom: 15px;"></i>
-        <h3 style="color: #444;">Busca tu cartón de Bingo</h3>
-        <p style="text-align: center; color: #999; font-size: 14px; margin-top: 10px; max-width: 250px;">
-            El cartón aparecerá aquí automáticamente al realizar la búsqueda.
-        </p>
-    </div>
+    <p class="instruction">Ingresa el número exacto para visualizarlo</p>
 
-    <script src="script.js"></script>
 </body>
 </html>
