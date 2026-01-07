@@ -6,7 +6,7 @@
     <title>Buscador de Cartones - Bingo Isa</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background-color: #f0f2f5;
             margin: 0;
             padding: 20px;
@@ -15,7 +15,7 @@
             align-items: center;
         }
 
-        /* Contenedor Principal (Tarjeta del Administrador) */
+        /* Diseño colorido que aprobaste */
         .admin-card {
             background: linear-gradient(135deg, #6e00ff, #ff00d4);
             border-radius: 20px;
@@ -28,34 +28,26 @@
             margin-bottom: 25px;
         }
 
-        .admin-card h2 {
-            margin: 0;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            opacity: 0.9;
-        }
-
-        .admin-card .phone {
+        .phone {
             font-size: 2rem;
             font-weight: bold;
-            margin: 15px 0;
             display: block;
+            margin: 10px 0;
         }
 
-        /* Buscador mejorado y centrado */
         .search-container {
-            width: 90%;
+            width: 95%;
             max-width: 400px;
             display: flex;
             align-items: center;
             background: white;
             border-radius: 50px;
             padding: 5px 15px;
-            border: 3px solid #00d4ff; /* Borde neón */
+            border: 3px solid #00d4ff;
             box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
         }
 
-        input[type="text"] {
+        input {
             border: none;
             padding: 15px;
             width: 100%;
@@ -71,20 +63,20 @@
             padding: 12px;
             border-radius: 50%;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s;
         }
 
-        .search-btn:hover {
-            transform: scale(1.1);
+        /* Área donde aparece el cartón */
+        #resultado-carton {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
         }
 
-        .instruction {
-            color: #666;
-            margin-top: 15px;
-            font-size: 0.9rem;
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -97,13 +89,30 @@
     </div>
 
     <div class="search-container">
-        <input type="text" placeholder="Número del cartón...">
-        <button class="search-btn">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="number" id="numeroCarton" placeholder="Número del cartón...">
+        <button class="search-btn" onclick="buscarCarton()">
+            🔍
         </button>
     </div>
 
-    <p class="instruction">Ingresa el número exacto para visualizarlo</p>
+    <div id="resultado-carton">
+        <p style="color: #888;">Ingresa el número para visualizarlo</p>
+    </div>
+
+    <script>
+        function buscarCarton() {
+            const numero = document.getElementById('numeroCarton').value;
+            const contenedor = document.getElementById('resultado-carton');
+            
+            if(numero) {
+                // Esta es la lógica para jalar la imagen (asumiendo la ruta del servidor)
+                // Se construye la URL del cartón usando el número ingresado
+                contenedor.innerHTML = `<img src="cartones/${numero}.jpg" onerror="this.src='https://via.placeholder.com/400x600?text=Carton+No+Encontrado'" />`;
+            } else {
+                alert("Por favor, ingresa un número");
+            }
+        }
+    </script>
 
 </body>
 </html>
