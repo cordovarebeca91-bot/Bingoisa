@@ -1,118 +1,56 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bingo Isa - Buscador</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f0f2f5;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+white;
         }
-
-        .header-card {
-            background: linear-gradient(135deg, #6e00ff, #ff00d4);
-            border-radius: 20px;
-            padding: 30px;
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            margin-bottom: 25px;
+        .logo-circulo img { width: 100%; height: 100%; object-fit: cover; }
+        .btn-whatsapp { background-color: #25d366; color: white; padding: 10px 20px; border-radius: 30px; text-decoration: none; font-weight: bold; }
+        .card-admin {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            margin: 20px 15px; padding: 25px; border-radius: 20px; color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-
-        .phone {
-            font-size: 2rem;
-            font-weight: bold;
-            display: block;
-            margin: 10px 0;
+        .buscador-wrap {
+            background: white; margin: 0 15px; padding: 10px; border-radius: 50px;
+            display: flex; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-
-        .search-container {
-            width: 95%;
-            max-width: 400px;
-            display: flex;
-            align-items: center;
-            background: white;
-            border-radius: 50px;
-            padding: 5px 15px;
-            border: 3px solid #00d4ff;
-            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
-            box-sizing: border-box; /* Esto evita que se esconda a la derecha */
-        }
-
-        input {
-            border: none;
-            padding: 15px;
-            width: 100%;
-            font-size: 1.1rem;
-            outline: none;
-            border-radius: 50px;
-        }
-
-        .search-btn {
-            background-color: #ff4b5c;
-            border: none;
-            color: white;
-            padding: 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        #contenedor-carton {
-            margin-top: 25px;
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
-        }
-
-        img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        input { flex-grow: 1; border: none; padding: 10px 15px; outline: none; font-size: 16px; }
+        .btn-buscar { background: #ff416c; color: white; border: none; padding: 10px 20px; border-radius: 40px; font-weight: bold; }
+        .visor {
+            background: white; margin: 20px 15px; padding: 40px 20px; border: 2px dashed #ff416c; border-radius: 20px; color: #888;
         }
     </style>
 </head>
 <body>
+    <header>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="logo-circulo">
+                <img src="https://i.ibb.co/qlcul2q/Bingo-ISA.jpg" alt="Logo">
+            </div>
+            <span style="font-weight: bold; font-size: 20px;">Bingo ISA</span>
+        </div>
+        <a href="https://wa.me/584167164666" class="btn-whatsapp">WhatsApp</a>
+    </header>
 
-    <div class="header-card">
-        <h2>ADMINISTRADOR</h2>
-        <span class="phone">04167164666</span>
-        <p>Busca tu cartón favorito por número</p>
+    <div class="card-admin">
+        <p style="margin:0; font-size: 12px; font-weight: bold;">ADMINISTRADOR</p>
+        <h1 style="margin:10px 0;">04167164666</h1>
+        <p style="margin:0; opacity: 0.9;">Busca tu cartón por número</p>
     </div>
 
-    <div class="search-container">
-        <input type="number" id="inputNumero" placeholder="Número del cartón...">
-        <button class="search-btn" onclick="buscarCarton()">🔍</button>
+    <div class="buscador-wrap">
+        <input type="number" id="numCarton" placeholder="Ej: 125">
+        <button class="btn-buscar" onclick="buscar()">BUSCAR</button>
     </div>
 
-    <div id="contenedor-carton">
-        <p style="color: #666;">Ingresa el número y dale a la lupa</p>
+    <div class="visor" id="resultado">
+        <h3>Tu cartón aparecerá aquí</h3>
     </div>
 
     <script>
-        function buscarCarton() {
-            const num = document.getElementById('inputNumero').value;
-            const contenedor = document.getElementById('contenedor-carton');
-
-            if (!num) {
-                alert("Escribe un número primero");
-                return;
+        function buscar() {
+            var n = document.getElementById('numCarton').value;
+            var r = document.getElementById('resultado');
+            if(n != "") {
+                r.innerHTML = "<h2>Cartón #" + n + "</h2><p>Buscando imagen...</p>";
             }
-
-            // CORRECCIÓN: La ruta según tu captura de GitHub
-            const url = `https://rebeca91-bot.github.io/${num}.jpg`;
-            
-            contenedor.innerHTML = `<img src="${url}" alt="Cargando..." onerror="this.onerror=null; alert('El cartón ${num} no se encontró en el servidor');">`;
         }
     </script>
-
 </body>
-</html>y
+</html>
